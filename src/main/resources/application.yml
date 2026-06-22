@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    url: jdbc:mysql://mysql:3306/lms?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: lms_user
+    password: lms_password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+
+server:
+  port: 8080
+
+jwt:
+  secret: REPLACE_WITH_STRONG_SECRET_BASE64_OR_ENV
+  expiration-ms: 86400000 # 24h
+
+logging:
+  level:
+    root: INFO
+    org.hibernate.SQL: DEBUG
